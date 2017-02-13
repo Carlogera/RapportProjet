@@ -5,6 +5,9 @@
 \usepackage[a4paper,left=75px,right=75px,top=75px,bottom=75px]{geometry}
 \usepackage[francais,english]{babel}
 \usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathabx} 
+\usepackage{multirow}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 \newcommand{\blap}[1]{\vbox to 0pt{#1\vss}}
@@ -22,7 +25,7 @@
 \enlargethispage{2cm}
 
 
- \includegraphics[height=70]{./Schema/esme-logo.jpg}
+% \includegraphics[height=70]{./Schema/esme-logo.jpg}
 % esme-logo.jpg: 0x0 pixel, 300dpi, 0.00x0.00 cm, bb=
 
 \begin{center}
@@ -39,7 +42,6 @@
 \vspace*{1cm}
 \Large{Projet encadr\'{e} par Monsieur Gilbert PRADEL}
 \end{center}
-
 
 \end{titlepage}
 
@@ -148,13 +150,13 @@ Le projet comprend deux parties distinctes : \\
 
 \begin{itemize}
     \item \textbf{L'ensemble haute tension} : A partir de batteries (et non du secteur pour d'\'{e}videntes
-raisons de s\'{e}curit\'{e}́ ) une haute tension est g\'{e} n \'{e} r \'{e} e par un convertisseur \'{e} l \'{e} vateur de
+raisons de s\'{e}curit\'{e} ) une haute tension est g\'{e} n \'{e} r \'{e} e par un convertisseur \'{e} l \'{e} vateur de
 type yback. Cet \'{e}l\'{e}vateur utilise un hacheur \`{a} haute fr\'{e} quence (300MHz environ) et
 un transformateur \'{e} l \'{e} vateur pour arriver \`{a} une tension secondaire de l'ordre de
-500V. L'intensit\'{e} inject\'{e} e dans le GSM est une salve de 10 impulsions de 33\mu s et de
+500V. L'intensit\'{e} inject\'{e} e dans le GSM est une salve de 10 impulsions de 33$\mu s$ et de
 500 mA maximum d'amplitude. Cette partie rel\`{e}ve de l'ENS de Cachan.
     
-    \item \textbf{L'ensemble de contr\^ole-commande} qui doit :
+    \item \textbf{L'ensemble de contr\^{o}le-commande} qui doit :
    
     \begin{itemize}
         \item contr\^oler les grandeurs \'electriques (tensions et courants au primaire et au secondaire) au moyen de 
@@ -180,8 +182,10 @@ s'agit donc d’une m\'{e}thode non invasive qui permettrait aux patients paraly
 retrouver une fonction motrice sans passer par la chirurgie. \\
 
 \begin{center}
- \includegraphics[height=90]{./Schema/sch_proj_modifie.jpg}
+% \includegraphics[height=90]{./Schema/sch_proj_modifie.jpg}
  % sch_proj_modifie.jpg: 0x0 pixel, 300dpi, 0.00x0.00 cm, bb=
+ %\caption{Schéma du projet}
+%\label{fig:sch_general}
 \end{center}
 
 L’objectif est d’injecter, via les \'{e}lectrodes, des impulsions d’intensit\'{e} tr\`{e}s importante sur un
@@ -207,55 +211,55 @@ correspondre au projet, nous avons repr\'{e}sent\'{e} leurs caract\'{e}ristiques
 
 \begin{tabular}{|c|c|}
 \hline
-\multirow{BeagleBone Black}
+\multirow{6}{*}{BeagleBone Black}
 & Nombre d’entr\'{e}es analogiques : 7 AIN (1,8V max) \\ 
 & Temps de la conversion : 125 ns\\ 
 & Pr\'{e}cision de la conversion : 12 bits \\ 
 & Bluetooth : non \\ 
 & Consommation : 460mA @5V \\ 
 & I2C/SPI : oui/oui \\ \hline
-\multirow{BeagleBone Black Wireless} 
+\multirow{6}{*}{BeagleBone Black Wireless} 
 & Nombre d’entr\'{e}es analogiques : 7 AIN  \\ 
 & Temps de la conversion : 125 ns\\ 
 & Pr\'{e}cision de la conversion : 12 bits \\ 
 & Bluetooth : oui(4.1) \\ 
 & Consommation :  \\ 
 & I2C/SPI : oui/oui \\ \hline
-\multirow{UDoo NEO} 
+\multirow{6}{*}{UDoo NEO} 
 & Nombre d’entr\'{e}es analogiques : 6 AIN  \\ 
 & Temps de la conversion : \\ 
 & Pr\'{e}cision de la conversion : 12 bits \\ 
 & Bluetooth : oui \\ & Consommation :  \\ 
 & I2C/SPI : oui/oui \\ \hline
-\multirow{Raspberry PI} 
+\multirow{6}{*}{Raspberry PI} 
 & Nombre d’entr\'{e}es analogiques : non  \\ 
 & Temps de la conversion : -\\ 
 & Pr\'{e}cision de la conversion : - \\ 
 & Bluetooth : non \\ 
 & Consommation :  \\ 
 & I2C/SPI : oui/oui \\ \hline
-\multirow{Nordic SC nRF52832} 
+\multirow{6}{*}{Nordic SC nRF52832} 
 & Nombre d’entr\'{e}es analogiques : 8 AIN  \\ 
 & Temps de la conversion : de 3 \`{a} 40 us\\ 
 & Pr\'{e}cision de la conversion : 12 bits \\ 
 & Bluetooth : oui(BLE) \\ 
 & Consommation : 5,5 \`{a} 7,5 uA @ 3,0V\\ 
 & I2C/SPI : oui/oui \\ \hline
-\multirow{Texas Instrument CC2540} 
+\multirow{6}{*}{Texas Instrument CC2540} 
 & Nombre d’entr\'{e}es analogiques : 9 AD0 (VDD +0,3 V)  \\ 
 & Temps de la conversion : de 2,1 us \`{a} 27 us\\ 
 & Pr\'{e}cision de la conversion : 16 bits \\ 
 & Bluetooth : non \\ 
 & Consommation : 6,5 mA @ 3.0V \\ 
 & I2C/SPI : oui/oui \\ \hline
-\multirow{Freescale MKL25Z} 
+\multirow{6}{*}{Freescale MKL25Z} 
 & Nombre d’entr\'{e}es analogiques : 9 AD0 (VDD +0,3 V)  \\ 
 & Temps de la conversion : de 2,1 us \`{a} 27 us\\ 
 & Pr\'{e}cision de la conversion : 16 bits \\ 
 & Bluetooth : non \\ 
 & Consommation : 6,5 mA @ 3.0V \\ 
 & I2C/SPI : oui/oui \\ \hline
-\multirow{Microchip PIC16F1619} 
+\multirow{6}{*}{Microchip PIC16F1619} 
 & Nombre d’entr\'{e}es analogiques : 12 ANSEL  \\ 
 & Temps de la conversion : 125 ns\\ 
 & Pr\'{e}cision de la conversion : 10 bits \\ 
@@ -275,7 +279,7 @@ Nous pouvons diviser notre syst\`{e}me en plusieurs sous-parties :
 \end{itemize}
 
 \begin{center}
- \includegraphics[height=150]{./Schema/sch_arch_sys_2.jpg}
+% \includegraphics[height=150]{./Schema/sch_arch_sys_2.jpg}
  % sch_arch_sys_2.jpg: 0x0 pixel, 300dpi, 0.00x0.00 cm, bb=
 \end{center}
 
@@ -286,7 +290,7 @@ Parmi les cartes cit\'{e}es dans le tableau ci-dessus, nous avons choisi la Beag
 
 
 
-Il s’agit d’une carte de d\'{e}veloppement de processeur ARM Cortex A8 32 bits, compatible
+Il s’agit d’une carte de d\'{e}veloppement de processeur ARM Cortex-A8 32 bits, compatible
 avec plusieurs syst\`{e}mes d’exploitation : Debian, Android etc.\\
 Nous pouvons la connecter via USB host, Ethernet etc.\\
 Elle est dot\'{e}e de 7 pins analogiques avec un temps de conversion de 125ns, d’un bus SPI et
@@ -360,7 +364,7 @@ de l’intensit\'{e} au primaire et au secondaire afin de pouvoir les comparer \
 r\'{e}f\'{e}rence.\\
 
 \begin{center}
- \includegraphics[height=80]{./Schema/sch_bloc_amp.jpg}
+% \includegraphics[height=80]{./Schema/sch_bloc_amp.jpg}
  % sch_bloc_amp.jpg: 0x0 pixel, 300dpi, 0.00x0.00 cm, bb=
 \end{center}
 
@@ -376,8 +380,8 @@ Le LEM LA 55-P est un capteur de courant poss\'{e}dant une isolation galvanique 
 primaire (high power) et le circuit secondaire (circuit \'{e}lectrique).
 Ce composant poss\`{e}de une r\'{e}sistance de mesure R M ajustable selon la valeur de la
 temp\'{e}rature, de l’alimentation et la valeur maximale du courant. Dans notre cas, pour une
-alimentation de \pm 12V, avec une valeur de courant maximale \`{a} \pm 50A, il nous faut :
-R M = 100\Omega.
+alimentation de $\pm 12V$, avec une valeur de courant maximale \`{a} $\pm 50A$, il nous faut :
+R M = 100$\Omega$.
 
 
 
@@ -389,37 +393,40 @@ un gain afin de r\'{e}soudre ce probl\`{e}me.\\
 C’est dans cet objectif que nous nous sommes int\'{e}ress\'{e}es au composant INA114 qui est un
 amplificateur polyvalent offrant une bonne pr\'{e}cision.\\
 Une simple r\'{e}sistance externe R G permet de r\'{e}gler le gain de 1 \`{a} 10 000. Une protection
-interne permet une r\'{e}sistance jusqu’\`{a} \pm 40 V sans aucun dommage.\\
-Il fonctionne avec une alimentation allant jusqu’\`{a} minimum \pm 2.25V, permettant son
+interne permet une r\'{e}sistance jusqu’\`{a} $\pm 40V$ sans aucun dommage.\\
+Il fonctionne avec une alimentation allant jusqu’\`{a} minimum $\pm 2.25V$, permettant son
 utilisation dans des syst\`{e}mes aliment\'{e} par des tensions de 5V. Sa consommation au repos
 est de maximum 3mA. Ces 8 broches sont impl\'{e}ment\'{e}es comme ci-dessous :\\ 
 
 \begin{tabular}{|c|c|}
 \hline 
-\multirow{1}
-& R_{G} \hline
-\multirow{2}
-& V_{IN}- \hline
-\multirow{3}
-& V_{IN}+ \hline
-\multirow{4}
-& V- \hline
-\multirow{5}
-& Ref \hline
-\multirow{6}
-& V_{0} \hline
-\multirow{7}
-& V+ \hline
-\multirow{8}
-& RG \hline
+Pin \no1 & $R_{G}$ \\ \hline
+Pin \no2 & $V_{IN}-$ \\ \hline
+Pin \no3 & $V_{IN}+$ \\ \hline
+Pin \no4 & V- \\ \hline
+Pin \no5 & Ref \\ \hline
+Pin \no6 & $V_{0}$ \\ \hline
+Pin \no7 & V+ \\ \hline
+Pin \no8 & RG \\ \hline
+
 \end{tabular} 
 
-La documentation de l’INA114 nous indique la relation entre le gain et la r\'{e}sistance R_{G} : \\
-\text{G = 1 +}\frac{50k\Omega}{R_{G}} \\
+La documentation de l’INA114 nous indique la relation entre le gain et la r\'{e}sistance $R_{G}$ : \\
+\begin{eqnarray}
+G = 1 + \frac{50k\Omega}{R_{G}}
+\end{eqnarray}
+
+
+
 De plus, nous avons d\'{e}termin\'{e} une valeur de gain \'{e}gale \`{a} 160.\\
 Ainsi, on aura :\\
-\text{G = 1 +}\frac{50k\Omega}{R_{G}}\text{= 160}
-\Leftrightarrow R_{G}\text{=314 \Omega} \\
+\begin{eqnarray}
+G = 1 + \frac{50k\Omega}{R_{G}} = 160 
+ R_{G} = 314\Omega
+\end{eqnarray}
+
+
+
 Pour des raisons de budget, nous avons par la suite opt\'{e} pour le composant INA188 ayant
 les m\^{e}mes caract\'{e}ristiques que le INA114.\\ \\
 
@@ -428,7 +435,7 @@ l’aide de deux diodes Zener. En effet, en mettant en place ces deux diodes en 
 l’addition des deux tensions respectives permet de limiter la tension, en positif et en n\'{e}gatif.
 
 \begin{center}
- \includegraphics[height=90]{./Schema/ecretage.jpg}
+% \includegraphics[height=90]{./Schema/ecretage.jpg}
  % ecretage.jpg: 0x0 pixel, 300dpi, 0.00x0.00 cm, bb=
 \end{center}
 
@@ -436,14 +443,14 @@ L’utilisation de ponts diviseurs de tension nous permet de diminuer la tension
 seuil maximal de la BeagleBone.\\
 
 \begin{center}
- \includegraphics[height=110]{./Schema/div_tension.jpg}
+ %\includegraphics[height=110]{./Schema/div_tension.jpg}
  % div_tension.jpg: 0x0 pixel, 300dpi, 0.00x0.00 cm, bb=
 \end{center}
 
 Enfin, un additionneur permet de redresser cette tension entre +1,5V et -1,5V. \\
 
 \begin{center}
- \includegraphics[height=150]{./Schema/add_offset.jpg}
+ %\includegraphics[height=150]{./Schema/add_offset.jpg}
  % add_offset.jpg: 0x0 pixel, 300dpi, 0.00x0.00 cm, bb=
 \end{center}
 
@@ -462,8 +469,8 @@ Le ADuM3190 est un amplificateur \`{a} erreur isol\'{e}, il est id\'{e}al pour l
 r\'{e}troaction. Il permet une meilleure r\'{e}ponse transitoire et contrairement aux solutions
 optocoupleuses, qui ont un rapport de transfert de courant incertain d’un point de vue
 dur\'{e}e de vie et \`{a} des temp\'{e}ratures \'{e}lev\'{e}es, la fonction de transfert ADuM3190 ne change
-pas pendant toute sa dur\'{e}e de vie et est stable sur une large plage de temp\'{e}rature de -40 \degree C
-\`{a} +125 \degree C.\\
+pas pendant toute sa dur\'{e}e de vie et est stable sur une large plage de temp\'{e}rature de 
+-40$\degree$ C \`{a} +125$\degree$ C.\\
 L'ADuM3190 est emball\'{e} dans un petit paquet QSOP \`{a} 16 fils pour une tension nominale de
 tension d'isolation de 2,5 kV.
 
@@ -485,21 +492,21 @@ autres, lorsque l’on sera dans une situation dangereuse pour le patient.\\ \\
 
 Lorsque l’on r\'{e}cup\`{e}re les donn\'{e}es acquises avec la deuxi\`{e}me BeagleBone, on souhaite les
 envoyer \`{a} la tablette via une liaison Bluetooth, et \`{a} un serveur distant via une
-communication Wi-Fi. \\ \\
+communication Wi-Fi. \\ \\
 
 Pour r\'{e}pondre \`{a} ces contraintes, nous avons choisi une BeagleBone Black Wireless. Celle-ci
 poss\`{e}de \`{a} la fois un Bluetooth 4.1 BLE, et un module Wi-Fi, qui nous permettra d’envoyer les
-donn\'{e}es de chaque patient \`{a} un serveur distant apr\`{e}s chaque manipulation du m\'{e}decin. \\ \\
+donn\'{e}es de chaque patient \`{a} un serveur distant apr\`{e}s chaque manipulation du m\'{e}decin. \\ \\
 
 Cependant, pour des raisons techniques et financi\`{e}res, deux BeagleBone Black seront
 utilis\'{e}es pour la suite des manipulations. On ajoutera un dongle Bluetooth 4.0 de type BLE,
-CSR 8510, pour effectuer les transferts de donn\'{e}es \`{a} la tablette. \\ \\
+CSR 8510, pour effectuer les transferts de donn\'{e}es \`{a} la tablette. \\ \\
 
 Le Bluetooth Low Energy r\'{e}duit fortement la consommation de la puce Bluetooth. Sa port\'{e}e
-se compte en quelques dizaines de m\`{e}tres.\\ \\
+se compte en quelques dizaines de m\`{e}tres.\\ \\
 
 Le serveur distant sera mis en place lorsque tout le syst\`{e}me aura \'{e}t\'{e} conçu.
-Une modification de l’architecture de notre syst\`{e}me est donc n\'{e}cessaire.\\ \\
+Une modification de l’architecture de notre syst\`{e}me est donc n\'{e}cessaire.\\ \\
 
 Suite \`{a} un TP effectu\'{e} en cours d’Android pour lequel nous avons dû configurer le Bluetooth.
 Nous avons d\'{e}cid\'{e} d’utiliser cette m\^{e}me carte, Microchip Curiosity pour effectuer les tests
@@ -513,7 +520,7 @@ La gestion de la batterie est primordiale pour deux points : \\
 Tout d’abord il faut s’assurer qu’un indicateur signalera la faible tension de celle-ci et donc
 un chargement n\'{e}cessaire, ainsi que son processus de chargement.\\
 La gestion de la batterie permettra \'{e}galement de s’assurer que la batterie a un niveau de
-charge suffisant pour effectuer la s\'{e}quence introduite par les param\`{e}tres m\'{e}decins.\\ \\
+charge suffisant pour effectuer la s\'{e}quence introduite par les param\`{e}tres m\'{e}decins.\\ \\
 
 Cependant, cette partie de notre syst\`{e}me de contrôle ne peut \^{e}tre effectu\'{e}e qu’une fois la
 partie Transformateur du projet de l’ENS Cachan achev\'{e}e.
@@ -536,13 +543,13 @@ Instrument, Freescale, Microchip, Arduino, Chip),
 
 \section{Difficult\'{e}s rencontr\'{e}es}
 
-Tout au long de ce semestre, nous avons rencontr\'{e} un certain nombre de difficult\'{e}s.\\ \\
+Tout au long de ce semestre, nous avons rencontr\'{e} un certain nombre de difficult\'{e}s.\\ \\
 
 Nous avons choisi de travailler sur BeagleBone Black. Or, cette derni\`{e}re ne pr\'{e}sente pas
 assez de broches analogiques pour pouvoir l’utiliser \`{a} la fois pour la gestion de l’\'{e}cran et la
 liaison Bluetooth.\\
 Il a donc \'{e}t\'{e} n\'{e}cessaire d’utiliser une deuxi\`{e}me BeagleBone Black afin de pouvoir g\'{e}rer les
-deux param\`{e}tres \'{e}voqu\'{e}s ci-dessus.\\ \\
+deux param\`{e}tres \'{e}voqu\'{e}s ci-dessus.\\ \\
 
 De m\^{e}me, nous avons eu de nombreux probl\`{e}mes concernant l’installation de Xenomai. En
 effet nous avons trouv\'{e} de nombreux tutoriels mais aucun d’eux ne furent concluants. \\ \\
